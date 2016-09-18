@@ -1,21 +1,25 @@
 
 package $2_tools.examples;
 
-import $2_tools.examples.comparator.AgeComparator;
-import $2_tools.examples.movie.Movie;
+import static $2_tools.examples.Race.*;
+import static com.google.common.collect.Maps.*;
+import static org.assertj.core.util.Lists.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-
-import static $2_tools.examples.Race.*;
-import static com.google.common.collect.Maps.newHashMap;
-import static org.assertj.core.util.Dates.parse;
-import static org.assertj.core.util.Lists.newArrayList;
+import $2_tools.examples.comparator.AgeComparator;
+import $2_tools.examples.movie.Movie;
 
 /**
  * Init data for assertions examples.
@@ -94,6 +98,11 @@ public abstract class AbstractAssertionsExamples {
         orcsWithHobbitPrisoners.add(guruk);
         orcsWithHobbitPrisoners.add(merry);
         orcsWithHobbitPrisoners.add(pippin);
+    }
+
+    protected Date parse(String stringDate) {
+        LocalDateTime localDateTime = LocalDate.parse(stringDate).atStartOfDay();
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 }

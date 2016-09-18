@@ -1,13 +1,11 @@
 package hero;
 
+import static com.google.common.collect.Lists.*;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
-import ch.lambdaj.Lambda;
 import com.google.common.collect.Lists;
-
-import static ch.lambdaj.Lambda.*;
-import static com.google.common.collect.Lists.newArrayList;
-import static org.hamcrest.CoreMatchers.equalTo;
 
 public class HeroRepository {
 
@@ -23,8 +21,9 @@ public class HeroRepository {
     }
 
     public List<Hero> findAllByAlias(String alias) {
-        return filter(having(on(Hero.class).getAlias(), equalTo(alias)), heroes);
-        //return heroes;
+        return heroes.stream()
+                .filter(hero -> hero.getAlias().equals(alias))
+                .collect(Collectors.toList());
     }
 
     public Hero findByAlias(String alias) {

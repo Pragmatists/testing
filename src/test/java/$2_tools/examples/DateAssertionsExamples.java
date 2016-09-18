@@ -1,13 +1,11 @@
 
 package $2_tools.examples;
 
-import $2_tools.examples.movie.Movie;
-import org.junit.Test;
-
 import java.util.Date;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.util.Dates.parse;
+import org.junit.Test;
+
+import $2_tools.examples.movie.Movie;
 
 /**
  * Date assertions examples.<br>
